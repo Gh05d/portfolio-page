@@ -1,0 +1,67 @@
+@mixin social-button($color) {
+  background-color: $color;
+  color: #fff;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.btn-instagram {
+  @include social-button(#8a3ab9);
+}
+
+.btn-linkedin {
+  @include social-button(#007bb5);
+}
+
+.btn-github {
+  @include social-button(#000);
+}
+
+.self-desc {
+  font-size: 16px;
+  color: #000;
+  padding-top: 20px;
+}
+
+span .footer-link {
+  display: block;
+  float: left;
+  margin: 3px 0 0 2px;
+}
+
+#Portfolio,
+#Contact,
+.white {
+  color: #fff;
+}
+
+#pic-desc {
+  background-image: url(https://res.cloudinary.com/domxil2ks/image/upload/s--cOs6m3xP--/v1504451104/beautiful_nature_image_autumn_forest-wallpaper-2880x1620_hi6dwu.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.portfolio-item {
+  margin-bottom: 20px;
+}
+
+footer {
+  color: #fff;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: left;
+
+  p a {
+    text-decoration: none;
+  }
+}
+
+#about {
+  margin-top: 20px;
+}

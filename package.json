@@ -1,0 +1,37 @@
+{
+  "name": "portfolio-page",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gh05d/portfolio-page.git"
+  },
+  "keywords": [
+    "react",
+    "portfolio",
+    "scss"
+  ],
+  "author": "Gh05d",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gh05d/portfolio-page/issues"
+  },
+  "homepage": "http://gh05d.de"
+}

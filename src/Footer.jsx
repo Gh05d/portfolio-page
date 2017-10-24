@@ -4,9 +4,7 @@ export default () => (
   <footer className="footer">
     <p>
       Created by: &nbsp;
-      <a href="https://codepen.io/Gh05d/full/WEmwPr/" target="_blank">
-        Gh05d
-      </a>
+      <a href="https://codepen.io/Gh05d/full/WEmwPr/">Gh05d</a>
     </p>
     <p>
       <time>{new Date().getFullYear()}</time>

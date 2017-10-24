@@ -17,7 +17,7 @@ export default () => (
     <div className="col-xs-4">
       <img
         src="http://hd.wallpaperswide.com/thumbs/cod_ghosts-t2.jpg"
-        alt="Picture of an awesome guy"
+        alt="An awesome guy"
         className="img-responsive"
       />
     </div>

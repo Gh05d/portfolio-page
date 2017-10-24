@@ -2,18 +2,22 @@ import React from "react";
 import { portfolioItems } from "./portfolioItems";
 
 export default () =>
-  portfolioItems.map(item => (
-    <div className="col-xs-6 portfolio-item">
-      <a href={item.link} className="thumbnail" target="_blank">
-        <img src={item.image} alt={item.alt} />
-      </a>
-      <div className="caption">
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
-        <p>Technologies used:</p>
-        {item.technologies.map(technologie => (
-          <span className="label label-primary footer-link">{technologie}</span>
-        ))}
+  portfolioItems.map(
+    ({ title, link, image, alt, description, technologies }) => (
+      <div className="col-xs-6 portfolio-item" key={title}>
+        <a href={link} className="thumbnail">
+          <img src={image} alt={alt} />
+        </a>
+        <div className="caption">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <p>Technologies used:</p>
+          {technologies.map((technologie, id) => (
+            <span key={id} className="label label-primary footer-link">
+              {technologie}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
-  ));
+    )
+  );

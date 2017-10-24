@@ -5,23 +5,39 @@ export default () => (
     <h1 className="text-center">Contact Me</h1>
     <div className="row">
       <div className="col-xs-6">
-        <form action="mailto:pascal.clanget@googlemail.com" id="contact">
+        <form method="POST" action="send" id="contact">
           <div className="form-group">
-            <input className="form-control" type="text" placeholder="Name" />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Name"
+              name="name"
+            />
           </div>
 
           <div className="form-group">
-            <input className="form-control" type="email" placeholder="Email" />
+            <input
+              className="form-control"
+              type="email"
+              placeholder="Email"
+              name="email"
+            />
           </div>
 
           <div className="form-group">
-            <input className="form-control" type="phone" placeholder="Phone" />
+            <input
+              className="form-control"
+              type="phone"
+              placeholder="Phone"
+              name="phone"
+            />
           </div>
 
           <div className="form-group">
             <textarea
               className="form-control"
               rows="5"
+              name="message"
               placeholder="Your Message"
             />
           </div>

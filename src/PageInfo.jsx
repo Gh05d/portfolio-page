@@ -3,7 +3,7 @@ import React from "react";
 export default () => {
   const text = [
     "Build with HTML, CSS, jQuery, React and Bootstrap",
-    "And with Scss, what made the Webpack Configuriation fun - not really",
+    "And with Scss, what made the Webpack Configuration fun - yeah, not really",
     "Webpack is straight from Hell - here to torture you as soon as you mastered Babel"
   ];
 

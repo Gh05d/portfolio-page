@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
   res.render("ContactForm.jsx");
 });
 
-app.post("/send", (req, res) => {
+app.post("/contactme", (req, res) => {
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
@@ -37,12 +37,15 @@ app.post("/send", (req, res) => {
 
   //Create a reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
+    host: "mail.google.com",
     port: 587,
     secure: false, //true for 465, false for other ports
     auth: {
       user: account.user,
       pass: account.pass
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 
@@ -52,8 +55,20 @@ app.post("/send", (req, res) => {
     to: "pascal.clanget@googlemail.com",
     subject: "Hello",
     text: "Hello World!",
-    html: "<b>Hello World?</b>"
+    html: output
   };
+
+  //Send email with the defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log("An error occurred:", error);
+    }
+
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
+    res.render("contact", { msg: "Email has been sent" });
+  });
 });
 
 app.listen(4000, () => console.log("Server started..."));

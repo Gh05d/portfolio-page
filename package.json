@@ -5,6 +5,7 @@
   "proxy": "http://localhost:4000/",
   "dependencies": {
     "autoprefixer": "7.1.2",
+    "axios": "^0.17.0",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -25,6 +26,7 @@
     "eslint-plugin-react": "7.1.0",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
+    "express-react-views": "^0.10.4",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.2",
     "fs-extra": "3.0.1",
@@ -50,12 +52,13 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node server.js",
+    "server": "nodemon server.js",
     "client": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "description":
+    "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "index.js",
   "devDependencies": {
     "concurrently": "^3.5.0",
@@ -66,11 +69,7 @@
     "type": "git",
     "url": "git+https://github.com/Gh05d/portfolio-page.git"
   },
-  "keywords": [
-    "react",
-    "portfolio",
-    "scss"
-  ],
+  "keywords": ["react", "portfolio", "scss"],
   "author": "Gh05d",
   "license": "ISC",
   "bugs": {
@@ -78,12 +77,8 @@
   },
   "homepage": "http://gh05d.de",
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+    "setupFiles": ["<rootDir>/config/polyfills.js"],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.js?(x)",
       "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
@@ -95,25 +90,14 @@
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ]
+    "moduleFileExtensions": ["web.js", "js", "json", "web.jsx", "jsx", "node"]
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   },
   "eslintConfig": {
     "extends": "react-app"

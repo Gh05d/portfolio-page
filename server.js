@@ -1,77 +1,75 @@
-const restify = require("restify");
+"use strict";
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
-const corsMiddleware = require("restify-cors-middleware");
+const path = require("path");
+const express = require("express");
 const dotenv = require("dotenv");
 
+//Load environment variables
 dotenv.load();
+const { USERNAME, PASSWORD } = process.env;
 
-//Cors Middleware to prevent cross-domain-errors
-const cors = corsMiddleware({
-  preflightMaxAge: 5,
-  origins: ["*"],
-  allowHeaders: ["API-Token"],
-  exposeHeaders: ["API-Token-Expiry"]
-});
+const PORT = process.env.PORT || 4000;
 
-//This is the server
-const server = restify.createServer();
+const app = express();
 
-//Handle cross-origin problems
-server.pre(cors.preflight);
-server.use(cors.actual);
+//Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//query & bodyparser to use to send data
-server.use(
-  restify.plugins.queryParser({
-    mapParams: true
-  })
-);
+app.post("/", (req, res) => {
+  const output = `
+    <p>Dude, you have a new contact request</p>
+    <h3>Contact Details</h3>
+    <ul>
+      <li>Name: ${req.body.name}</li>
+      <li>Phone: ${req.body.phone}</li>
+      <li>Email: ${req.body.email}</li>
+    </ul>
+    <h3>Message</h3>
+    <p>${req.body.message}</p>
+  `;
 
-server.use(
-  restify.plugins.bodyParser({
-    mapParams: true
-  })
-);
-
-server.use(restify.plugins.fullResponse());
-
-//Setup Gmail to send emails
-const smtpTransport = nodemailer.createTransport({
-  service: "Gmail",
-  auth: {
-    user: process.env.USERNAME,
-    password: process.env.PASSWORD
-  }
-});
-
-//The POST using nodemailer
-server.post("/contactme", function create(req, res, next) {
-  const mail = {
-    from: req.params.email,
-    to: "pascal.clanget@googlemail.com",
-    subject: "Finally, this shit works :-)",
-    html:
-      "name: <br/>" +
-      req.params.nom +
-      "<br/> Message: <br/>" +
-      req.params.message +
-      "<br/>email<br/>" +
-      req.params.email
-  };
-
-  smtpTransport.sendMail(mail, (err, res) => {
-    if (err) {
-      console.log("An error occured during sending!");
-      console.log(error);
-    } else {
-      console("Email successfully sent!");
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    service: "Gmail",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: USERNAME,
+      pass: PASSWORD
     }
-
-    smtpTransport.close();
   });
 
-  res.send(201, req.params);
+  transporter.verify((err, success) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Server is up and running and ready to take your messages");
+    }
+  });
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+    from: '"Nodemailer Service" <foo@blurdybloop.com>', // sender address
+    to: "pascal.clanget@googlemail.com", // list of receivers
+    subject: "Bro, new contact request ✔", // Subject line
+    text: "New Contact Request", // plain text body
+    html: output // html body
+  };
+
+  //send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+
+    res.send(true);
+    console.log("Message sent: %s", info.messageId);
+  });
 });
 
-server.listen(4000);
+app.listen(
+  PORT,
+  console.log(`Server running on port ${PORT}\nPress CTRL + C to exit`)
+);

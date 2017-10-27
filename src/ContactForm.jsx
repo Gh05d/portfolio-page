@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "./forms";
+import axios from "axios";
 
 class ContactForm extends Component {
   constructor(props) {
@@ -29,27 +30,20 @@ class ContactForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/contactme", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
+    axios
+      .post("http://localhost:4000", {
         email: this.state.email,
         name: this.state.name,
         phone: this.state.phone,
         message: this.state.message
       })
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        if (responseJson.success) {
+      .then(res => {
+        if (res) {
           this.setState({ formSent: true });
         } else this.setState({ formSent: false });
       })
       .catch(error => {
-        console.error(error);
+        console.log(error);
       });
   }
 
@@ -100,7 +94,10 @@ class ContactForm extends Component {
         <div className="row">
           <div className="col-xs-6">
             {this.state.formSent ? (
-              <div id="sent">{name},\n Thanks for contacting me</div>
+              <div id="sent" className="text-center">
+                {name},<br /> Thanks for contacting me
+                <br /> I will reply as soon as possible
+              </div>
             ) : (
               <form onSubmit={this.handleSubmit} id="contact">
                 {showFields}

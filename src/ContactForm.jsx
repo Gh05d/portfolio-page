@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "./forms";
 import axios from "axios";
+import anime from "animejs";
 
 class ContactForm extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class ContactForm extends Component {
       name: "",
       phone: "",
       message: "",
-      formSent: false
+      formSent: false,
+      error: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,6 +29,16 @@ class ContactForm extends Component {
     });
   }
 
+  animateSubmit() {
+    anime({
+      targets: "#contact",
+      translateX: { value: -2000, duration: 1000 },
+      complete: () => {
+        this.setState({ formSent: true });
+      }
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
@@ -37,18 +49,19 @@ class ContactForm extends Component {
         phone: this.state.phone,
         message: this.state.message
       })
-      .then(res => {
-        if (res) {
-          this.setState({ formSent: true });
-        } else this.setState({ formSent: false });
-      })
       .catch(error => {
         console.log(error);
+        this.setState({
+          formSent: false,
+          error: "Sorry, the form could not be sent. <br />Please try again."
+        });
       });
+
+    this.animateSubmit();
   }
 
   render() {
-    const { name, email, phone, message } = this.state;
+    const { name, email, phone, message, error } = this.state;
     const checkEmail = /[\w.]+@[a-zA-z]+\.[a-zA-z]{2,}/g;
     //Variable for disabling the form if it is not properly filled
     const isEnabled =
@@ -94,7 +107,7 @@ class ContactForm extends Component {
         <div className="row">
           <div className="col-xs-6">
             {this.state.formSent ? (
-              <div id="sent" className="text-center">
+              <div id="sent" className="text-center animated fadeIn">
                 {name},<br /> Thanks for contacting me
                 <br /> I will reply as soon as possible
               </div>
@@ -119,6 +132,7 @@ class ContactForm extends Component {
                   disabled={!isEnabled}>
                   Submit
                 </button>
+                {error ? error : ""}
               </form>
             )}
           </div>

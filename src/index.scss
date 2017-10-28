@@ -32,9 +32,15 @@ span.footer-link {
 }
 
 #Portfolio,
-#Contact,
 .white {
   color: #fff;
+}
+
+#Contact {
+  color: #fff;
+  h1 {
+    margin-bottom: 25px;
+  }
 }
 
 #pic-desc {
@@ -70,4 +76,5 @@ footer {
 #sent {
   font-size: 27px;
   color: gold;
+  height: 310px;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { portfolioItems } from "./portfolioItems";
+import { portfolioItems } from "../portfolioItems";
 
 export default () =>
   portfolioItems.map(

@@ -1,35 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from "./forms";
 import axios from "axios";
 import anime from "animejs";
 
-class ContactForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      name: "",
-      phone: "",
-      message: "",
-      formSent: false,
-      error: ""
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+class ContactForm extends React.Component {
+  state = {
+    email: "",
+    name: "",
+    phone: "",
+    message: "",
+    formSent: false,
+    error: ""
+  };
 
   //Update multiple fields
-  handleInputChange(event) {
+  handleInputChange = event => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value
     });
-  }
+  };
 
-  animateSubmit() {
+  animateSubmit = () => {
     anime({
       targets: "#contact",
       translateX: { value: -2000, duration: 1000 },
@@ -37,28 +30,28 @@ class ContactForm extends Component {
         this.setState({ formSent: true });
       }
     });
-  }
+  };
 
-  handleSubmit(e) {
+  handleSubmit = async e => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:4000", {
+    try {
+      await axios.post("http://localhost:4000", {
         email: this.state.email,
         name: this.state.name,
         phone: this.state.phone,
         message: this.state.message
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({
-          formSent: false,
-          error: "Sorry, the form could not be sent. <br />Please try again."
-        });
       });
 
-    this.animateSubmit();
-  }
+      this.animateSubmit();
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        formSent: false,
+        error: "Sorry, the form could not be sent. <br />Please try again."
+      });
+    }
+  };
 
   render() {
     const { name, email, phone, message, error } = this.state;
@@ -129,7 +122,8 @@ class ContactForm extends Component {
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  disabled={!isEnabled}>
+                  disabled={!isEnabled}
+                >
                   Submit
                 </button>
                 {error ? error : ""}

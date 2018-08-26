@@ -1,0 +1,33 @@
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bio-image bio bio"
+    "job-1 job-2 job-3";
+  grid-template-columns: repeat(3, 1fr);
+
+  #bio-image {
+    grid-area: bio-image;
+    height: 250px;
+    margin: auto;
+    border-radius: 50%;
+    border: 3px solid $secondary-color;
+  }
+
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+@for $i from 1 through 3 {
+  .job-#{$i} {
+    grid-area: job-#{$i};
+  }
+}

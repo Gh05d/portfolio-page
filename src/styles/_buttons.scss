@@ -1,0 +1,31 @@
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #eee;
+    color: #222;
+  }
+
+  &-dark {
+    @extend .btn;
+    @include easeOut;
+    background: darken($primary-color, 50);
+    color: #fff;
+  }
+
+  &-light {
+    @extend .btn;
+    @include easeOut;
+    background: lighten($primary-color, 50);
+    color: #333;
+  }
+}

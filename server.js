@@ -1,7 +1,6 @@
-"use strict";
+
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
-const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 

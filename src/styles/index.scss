@@ -1,5 +1,9 @@
 @import "config";
+@import "buttons";
 @import "menu";
+@import "about";
+@import "portfolio";
+@import "contact";
 
 .text-secondary {
   color: $secondary-color;
@@ -12,9 +16,8 @@
 body {
   @include background;
   background: $primary-color;
-  color: #fff;
+  color: set-text-color($primary-color);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  height: 100%;
   line-height: 1.5;
   margin: 0;
 }
@@ -47,8 +50,10 @@ header {
 }
 
 main {
-  height: 100%;
+  flex: 1;
   padding: 4rem;
+  overflow: hidden;
+  min-height: 100%;
 
   .icons {
     margin-top: 1rem;
@@ -57,17 +62,40 @@ main {
       padding: 0.4rem;
 
       &:hover {
-        @include easeOut;
         color: $secondary-color;
       }
     }
   }
 
-  &#home {
-    overflow: hidden;
-
-    h1 {
-      margin-top: 20vh;
-    }
+  h1 {
+    @include easeOut;
+    margin-top: 5vh;
   }
 }
+
+#home {
+  h1 {
+    margin-top: 20vh;
+  }
+}
+
+footer {
+  display: flex;
+  background: darken($primary-color, 10);
+  flex-flow: row;
+  height: $footer-height;
+  justify-content: space-between;
+  border-top: 1px solid $secondary-color;
+
+  p {
+    padding: 0 1rem;
+  }
+}
+
+#wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+@import "mobile";

@@ -1,0 +1,25 @@
+#sent {
+  color: $secondary-color;
+  font-size: 1.3rem;
+
+  div {
+    &:first-of-type {
+      color: darken($secondary-color, 10);
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.form-control {
+  height: auto;
+  width: 20rem;
+}
+
+.error {
+  background: lighten($primary-color, 10);
+  color: rgb(240, 5, 5);
+  font-size: 1.5rem;
+  padding: 1rem;
+}

@@ -1,13 +1,10 @@
 import React from "react";
 
 export default () => (
-  <footer className="footer">
+  <footer>
+    <p>Created by: &nbsp; Gh05d</p>
     <p>
-      Created by: &nbsp;
-      <a href="https://codepen.io/Gh05d/full/WEmwPr/">Gh05d</a>
-    </p>
-    <p>
-      <time>{new Date().getFullYear()}</time>
+      Copyright &copy; <time>{new Date().getFullYear()}</time>
     </p>
   </footer>
 );

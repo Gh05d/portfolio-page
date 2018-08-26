@@ -1,6 +1,8 @@
 export const portfolioItems = [
   {
-    link: "https://codepen.io/Gh05d/project/full/AVYKkN/",
+    imageLink: "https://codepen.io/Gh05d/project/full/AVYKkN/",
+    codeLink: "https://codepen.io/Gh05d/project/editor/AVYKkN",
+    icon: "Codepen",
     image:
       "http://res.cloudinary.com/domxil2ks/image/upload/s--YPiFZ3US--/v1504448772/tribute-page_ycb28z.png",
     alt: "A tribute page to Richard Feynman",
@@ -9,7 +11,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "React"]
   },
   {
-    link: "https://doppelkinn-domme.herokuapp.com/",
+    imageLink: "https://doppelkinn-domme.herokuapp.com/",
+    codeLink: "https://github.com/Gh05d/doppelkinn-domme",
+    icon: "Github",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--LwW_6WQm--/v1504448769/doppelkinn-domme_wsh2qw.png",
     alt: "Doppelkinn-Domme Ausredengenerator",
@@ -26,7 +30,9 @@ export const portfolioItems = [
     ]
   },
   {
-    link: "https://party-tube.herokuapp.com/",
+    imageLink: "https://party-tube.herokuapp.com/",
+    codeLink: "https://github.com/Gh05d/Partytube",
+    icon: "Github",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--wOvj0meQ--/v1504448775/party-tube_bqkb2d.png",
     alt: "Partytube",
@@ -36,7 +42,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "React", "Node.js"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/VMYxOd/",
+    imageLink: "https://codepen.io/Gh05d/full/VMYxOd/",
+    codeLink: "https://codepen.io/Gh05d/pen/VMYxOd",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--7_Y5WLUl--/v1505473542/donald_trump_quotes_wq6e1i.png",
     alt: "Random quotes from Donald Trump",
@@ -46,7 +54,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "React", "Axios", "Font Awesome"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/OxyPdo/",
+    imageLink: "https://codepen.io/Gh05d/full/OxyPdo/",
+    codeLink: "https://codepen.io/Gh05d/pen/OxyPdo/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--VryfryAJ--/v1505574673/weather-app_nexuad.png",
     alt: "weather app",
@@ -55,7 +65,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "React", "Axios"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/wrKPVq/",
+    imageLink: "https://codepen.io/Gh05d/full/wrKPVq/",
+    codeLink: "https://codepen.io/Gh05d/pen/wrKPVq/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--hLJr51Ra--/v1505679848/wikipedia-viewer_egz6j8.png",
     alt: "Wikipedia Viewer",
@@ -65,7 +77,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "React", "Axios"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/gGaVBo/",
+    imageLink: "https://codepen.io/Gh05d/full/gGaVBo/",
+    codeLink: "https://codepen.io/Gh05d/pen/gGaVBo/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--_k3LLABI--/v1505816819/twitch_uoymax.png",
     alt: "Twitch.tv channels",
@@ -75,7 +89,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "W3.CSS", "React", "Axios"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/OxOBdE/",
+    imageLink: "https://codepen.io/Gh05d/full/OxOBdE/",
+    codeLink: "https://codepen.io/Gh05d/pen/OxOBdE/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--0ZBPTsRt--/v1507209038/calculator_dnlcwi.png",
     alt: "Onlince Calculator",
@@ -84,7 +100,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "Bootstrap", "React"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/wrpdmy/",
+    imageLink: "https://codepen.io/Gh05d/full/wrpdmy/",
+    codeLink: "https://codepen.io/Gh05d/full/wrpdmy/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--MSw2HnI8--/v1507296310/pomodoro_fifjw1.png",
     alt: "Pomodoro",
@@ -93,7 +111,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "W3.CSS", "React", "Ajax"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/XeZKZd/",
+    imageLink: "https://codepen.io/Gh05d/full/XeZKZd/",
+    codeLink: "https://codepen.io/Gh05d/pen/XeZKZd/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--LYfcvEHs--/v1507894477/tictactoe_fw6svr.png",
     alt: "Tic Tac Toe",
@@ -103,7 +123,9 @@ export const portfolioItems = [
     technologies: ["HTML", "CSS", "W3CSS", "React", "lodash"]
   },
   {
-    link: "https://github.com/Gh05d/simon",
+    imageLink: "http://simon.gh05d.de/",
+    codeLink: "https://github.com/Gh05d/simon",
+    icon: "Github",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--hl1D9N8U--/v1508335651/simon_s6drwp.png",
     alt: "Simon Game",
@@ -121,7 +143,9 @@ export const portfolioItems = [
     ]
   },
   {
-    link: "https://codepen.io/Gh05d/full/boyero/",
+    imageLink: "https://codepen.io/Gh05d/full/boyero/",
+    codeLink: "https://codepen.io/Gh05d/pen/boyero/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--RusNXE3B--/v1508829664/Markdown-Previewer_z4zyjd.png",
     alt: "Markdown Previewer",
@@ -131,7 +155,9 @@ export const portfolioItems = [
     technologies: ["HTML", "Scss", "React", "marked"]
   },
   {
-    link: "https://codepen.io/Gh05d/full/yzWrzd/",
+    imageLink: "https://codepen.io/Gh05d/full/yzWrzd/",
+    codeLink: "https://codepen.io/Gh05d/pen/yzWrzd/",
+    icon: "Codepen",
     image:
       "https://res.cloudinary.com/domxil2ks/image/upload/s--NBRma6A_--/v1508844489/leaderboard_ulnjxn.png",
     alt: "Leaderboard",

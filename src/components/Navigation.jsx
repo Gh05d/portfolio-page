@@ -1,18 +1,23 @@
 import React from "react";
 import { times } from "lodash";
-import portrait from "../images/portrait.jpeg";
+import { renderPortrait } from "../constants";
 
 export default class Navigation extends React.Component {
   state = {
-    showMenu: false,
-    current: 0
+    showMenu: false
   };
 
   toggleMenu = () =>
     this.setState(prevState => ({ showMenu: !prevState.showMenu }));
 
+  navigate = link => {
+    this.setState({ showMenu: false });
+    this.props.navigate(link);
+  };
+
   render() {
-    const { showMenu, current } = this.state;
+    const { showMenu } = this.state;
+    const { location } = this.props;
 
     const links = [
       { title: "Home", link: "home" },
@@ -24,13 +29,12 @@ export default class Navigation extends React.Component {
     const navBarLinks = links.map(({ link, title }, key) => (
       <li
         key={key}
-        className={`nav-item ${current == key ? "current" : ""} ${
-          showMenu ? "" : "show"
-        }`}
+        className={`nav-item ${showMenu ? "" : "show"}`}
+        onClick={() => this.navigate(link)}
       >
-        <a href={link} className="nav-link">
+        <span className={`nav-link ${link == location ? "current" : ""}`}>
           {title}
-        </a>
+        </span>
       </li>
     ));
 
@@ -45,7 +49,7 @@ export default class Navigation extends React.Component {
 
         <nav className={`menu ${showMenu ? "show" : ""}`}>
           <div className={`menu-branding ${showMenu ? "show" : ""}`}>
-            <img src={portrait} alt="Cool Dude" id="portrait" />
+            {renderPortrait()}
           </div>
 
           <ul className={`menu-nav ${showMenu ? "show" : ""}`}>

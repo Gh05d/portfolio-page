@@ -17,9 +17,7 @@ class ContactForm extends React.Component {
   handleInputChange = event => {
     const { name, value } = event.target;
 
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   animateSubmit = () => {
@@ -34,13 +32,14 @@ class ContactForm extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    const { email, name, phone, message } = this.state;
 
     try {
       await axios.post("http://localhost:4000", {
-        email: this.state.email,
-        name: this.state.name,
-        phone: this.state.phone,
-        message: this.state.message
+        email,
+        name,
+        phone,
+        message
       });
 
       this.animateSubmit();
@@ -48,7 +47,7 @@ class ContactForm extends React.Component {
       console.log(error);
       this.setState({
         formSent: false,
-        error: "Sorry, the form could not be sent. <br />Please try again."
+        error: "Sorry, the form could not be sent. Please try again."
       });
     }
   };
@@ -94,56 +93,43 @@ class ContactForm extends React.Component {
     ));
 
     return (
-      <div id="Contact">
-        <h1 className="text-center">Contact Me</h1>
+      <main id="contact">
+        <h1 className="lg-heading">
+          Contact <span className="text-secondary">Me</span>
+        </h1>
 
-        <div className="row">
-          <div className="col-xs-6">
-            {this.state.formSent ? (
-              <div id="sent" className="text-center animated fadeIn">
-                {name},<br /> Thanks for contacting me
-                <br /> I will reply as soon as possible
+        <h2 className="sm-heading">Just drop me a quick message here</h2>
+
+        <div className="form-holder">
+          {this.state.formSent ? (
+            <div id="sent" className="animated fadeIn">
+              <div>{name},</div>
+              <div>Thanks for contacting me.</div>
+              <div>I will reply as soon as possible.</div>
+            </div>
+          ) : (
+            <form onSubmit={this.handleSubmit} id="contact">
+              {showFields}
+
+              <div className="form-group">
+                <textarea
+                  className="form-control"
+                  rows="5"
+                  placeholder="Your Message"
+                  value={message}
+                  name="message"
+                  onChange={this.handleInputChange}
+                />
               </div>
-            ) : (
-              <form onSubmit={this.handleSubmit} id="contact">
-                {showFields}
 
-                <div className="form-group">
-                  <textarea
-                    className="form-control"
-                    rows="5"
-                    placeholder="Your Message"
-                    value={message}
-                    name="message"
-                    onChange={this.handleInputChange}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={!isEnabled}
-                >
-                  Submit
-                </button>
-                {error ? error : ""}
-              </form>
-            )}
-          </div>
-
-          <div className="col-xs-6">
-            <p>
-              Want to get in touch with me? Be it to request more info about
-              myself or my experience, to ask for my resume, how I built this
-              awesome little portfolio page, which footballer is the best in the
-              world and what the hell OMAD is... Just feel free to drop me a
-              line anytime.
-            </p>
-
-            <p>I will reply, I promise ;)</p>
-          </div>
+              <button type="submit" className="btn-dark" disabled={!isEnabled}>
+                Submit
+              </button>
+              {error ? <div className="error">{error}</div> : ""}
+            </form>
+          )}
         </div>
-      </div>
+      </main>
     );
   }
 }

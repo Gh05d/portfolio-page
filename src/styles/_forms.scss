@@ -1,0 +1,79 @@
+$success-color: #2385df;
+$error-color: #ff030a;
+
+.form-holder {
+  display: flex;
+  flex-flow: column;
+}
+
+.form-field {
+  position: relative;
+  width: 20rem;
+
+  input,
+  textarea {
+    width: 100%;
+    text-indent: 30px;
+    border: 2px solid #dadada;
+    border-radius: 7px;
+    min-height: 2rem;
+    margin-bottom: 0.5rem;
+
+    &:focus {
+      outline: none;
+      border-color: darken($secondary-color, 10);
+      box-shadow: 0 0 5px darken($secondary-color, 10);
+    }
+  }
+
+  textarea {
+    text-indent: 0;
+  }
+
+  i {
+    position: absolute;
+    top: 8px;
+    left: 18rem;
+
+    &:first-of-type {
+      position: absolute;
+      top: 8px;
+      left: 7px;
+      color: darken($secondary-color, 10);
+    }
+  }
+
+  .fa-times {
+    color: $error-color;
+  }
+
+  .fa-check {
+    color: #09b01a;
+  }
+}
+
+.form-success {
+  outline: none;
+  border-color: lighten($success-color, 20);
+  box-shadow: 0 0 10px lighten($success-color, 20);
+}
+
+.form-error {
+  outline: none;
+  border-color: lighten($error-color, 20);
+  box-shadow: 0 0 10px lighten($error-color, 20);
+}
+
+.sender-name {
+  color: $secondary-color;
+  font-size: 1.5rem;
+}
+
+.hide-form {
+  @include easeOut;
+  opacity: 0;
+}
+
+.show-form {
+  position: absolute;
+}

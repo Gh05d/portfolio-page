@@ -1,7 +1,6 @@
 import React from "react";
-import Form from "./forms";
+import Field from "./field";
 import axios from "axios";
-import anime from "animejs";
 
 class ContactForm extends React.Component {
   state = {
@@ -20,16 +19,6 @@ class ContactForm extends React.Component {
     this.setState({ [name]: value });
   };
 
-  animateSubmit = () => {
-    anime({
-      targets: "#contact",
-      translateX: { value: -2000, duration: 1000 },
-      complete: () => {
-        this.setState({ formSent: true });
-      }
-    });
-  };
-
   handleSubmit = async e => {
     e.preventDefault();
     const { email, name, phone, message } = this.state;
@@ -42,7 +31,7 @@ class ContactForm extends React.Component {
         message
       });
 
-      this.animateSubmit();
+      this.setState({ formSent: true });
     } catch (error) {
       console.log(error);
       this.setState({
@@ -63,33 +52,35 @@ class ContactForm extends React.Component {
       {
         type: "text",
         onChangeFunction: this.handleInputChange,
-        placeholder: "Your name",
+        placeholder: "Your Name",
         value: name,
         name: "name",
         icon: "user",
+        required: true,
         validate: name
       },
       {
         type: "email",
         onChangeFunction: this.handleInputChange,
-        placeholder: "Your email",
+        placeholder: "Your Email",
         value: email,
         name: "email",
         icon: "envelope",
+        required: true,
         validate: email.match(checkEmail)
       },
       {
         type: "text",
         onChangeFunction: this.handleInputChange,
-        placeholder: "Your phonenumber",
+        placeholder: "Your Phone number",
         value: phone,
         name: "phone",
-        icon: "earphone"
+        icon: "phone"
       }
     ];
 
     const showFields = fields.map(field => (
-      <Form {...field} key={field.name} />
+      <Field {...field} key={field.name} />
     ));
 
     return (
@@ -101,33 +92,34 @@ class ContactForm extends React.Component {
         <h2 className="sm-heading">Just drop me a quick message here</h2>
 
         <div className="form-holder">
-          {this.state.formSent ? (
-            <div id="sent" className="animated fadeIn">
-              <div>{name},</div>
-              <div>Thanks for contacting me.</div>
-              <div>I will reply as soon as possible.</div>
+          <div className={this.state.formSent ? "show-form" : "hide-form"}>
+            <div className="sender-name">{name},</div>
+            <div>Thanks for contacting me.</div>
+            <div>I will reply as soon as possible.</div>
+          </div>
+
+          <form
+            onSubmit={this.handleSubmit}
+            className={this.state.formSent ? "hide-form" : "show-form"}
+          >
+            {showFields}
+
+            <div className="form-field">
+              <textarea
+                className="form-control"
+                rows="5"
+                placeholder="Your Message"
+                value={message}
+                name="message"
+                onChange={this.handleInputChange}
+              />
             </div>
-          ) : (
-            <form onSubmit={this.handleSubmit} id="contact">
-              {showFields}
 
-              <div className="form-group">
-                <textarea
-                  className="form-control"
-                  rows="5"
-                  placeholder="Your Message"
-                  value={message}
-                  name="message"
-                  onChange={this.handleInputChange}
-                />
-              </div>
-
-              <button type="submit" className="btn-dark" disabled={!isEnabled}>
-                Submit
-              </button>
-              {error ? <div className="error">{error}</div> : ""}
-            </form>
-          )}
+            <button type="submit" className="btn-dark" disabled={!isEnabled}>
+              Submit
+            </button>
+            {error ? <div className="error">{error}</div> : ""}
+          </form>
         </div>
       </main>
     );

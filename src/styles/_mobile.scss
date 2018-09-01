@@ -95,10 +95,17 @@
     }
   }
 
-  .form-control {
+  .form-holder {
     width: auto;
-    float: left;
-
     margin-bottom: 1rem;
+
+    form {
+      display: flex;
+      flex-flow: column;
+
+      button {
+        width: 100%;
+      }
+    }
   }
 }

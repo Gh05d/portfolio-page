@@ -1,13 +1,13 @@
-
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const express = require("express");
 const dotenv = require("dotenv");
+const path = require("path");
+const cors = require("cors");
 
 //Load environment variables
 dotenv.load();
-const { USERNAME, PASSWORD } = process.env;
-
+const { USER_NAME, PASSWORD, EMAIL_HOST } = process.env;
 const PORT = process.env.PORT || 4000;
 
 const app = express();
@@ -15,8 +15,19 @@ const app = express();
 //Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: ["http://gh05d.de", "http://www.gh05d.de"],
+    credentials: true // <-- REQUIRED backend setting
+  })
+);
+app.use(express.static("./build"));
 
-app.post("/", (req, res) => {
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./build", "index.html"));
+});
+
+app.post("/send", (req, res) => {
   const output = `
     <p>Dude, you have a new contact request</p>
     <h3>Contact Details</h3>
@@ -31,11 +42,11 @@ app.post("/", (req, res) => {
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    service: "Gmail",
+    host: EMAIL_HOST,
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: USERNAME,
+      user: USER_NAME,
       pass: PASSWORD
     }
   });

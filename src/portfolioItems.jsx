@@ -1,4 +1,17 @@
+import raguprato from "./images/raguprato.png";
+import domme from "./images/domme.png";
+
 export const portfolioItems = [
+  {
+    imageLink: raguprato,
+    codeLink: "https://github.com/Gh05d/raguprato",
+    icon: "Github",
+    image: raguprato,
+    alt: "Raguprato",
+    title: "Raguprato",
+    description: "An App that has several practice tools for playing guitar",
+    technologies: ["HTML", "CSS", "Svelte", "JavaScript", "Scss"]
+  },
   {
     imageLink: "https://codepen.io/Gh05d/project/full/AVYKkN/",
     codeLink: "https://codepen.io/Gh05d/project/editor/AVYKkN",
@@ -14,20 +27,12 @@ export const portfolioItems = [
     imageLink: "https://doppelkinn-domme.herokuapp.com/",
     codeLink: "https://github.com/Gh05d/doppelkinn-domme",
     icon: "Github",
-    image:
-      "https://res.cloudinary.com/domxil2ks/image/upload/s--LwW_6WQm--/v1504448769/doppelkinn-domme_wsh2qw.png",
+    image: domme,
     alt: "Doppelkinn-Domme Ausredengenerator",
     title: "Doppelkinn-Domme Ausredengenerator",
     description:
       "A generator for excuses if you don't feel like hanging out with your friends",
-    technologies: [
-      "HTML",
-      "CSS",
-      "Bootstrap",
-      "JavaScript",
-      "Mustache",
-      "Node.js"
-    ]
+    technologies: ["HTML", "CSS", "JavaScript", "React"]
   },
   {
     imageLink: "https://party-tube.herokuapp.com/",

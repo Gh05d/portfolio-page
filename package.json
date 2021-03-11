@@ -37,7 +37,7 @@
     "postcss-loader": "2.0.6",
     "promise": "8.0.1",
     "react": "^16.0.0",
-    "react-dev-utils": "^4.2.3",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.0.0",
     "restify": "^6.2.3",
     "restify-cors-middleware": "^1.0.1",

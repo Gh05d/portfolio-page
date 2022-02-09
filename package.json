@@ -60,7 +60,7 @@
   "main": "index.js",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "sass-loader": "^6.0.6"
   },
   "repository": {
